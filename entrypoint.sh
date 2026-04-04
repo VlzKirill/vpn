@@ -12,8 +12,8 @@ if [ ! -f /etc/ocserv/server-cert.pem ]; then
   certtool --generate-privkey --outfile /etc/ocserv/server-key.pem
 
 cat << EOF > /etc/ocserv/server.tmpl
-cn = VPN
-organization = VPN
+cn = sila4i.kz
+organization = sila4i
 expiration_days = 3650
 signing_key
 encryption_key
@@ -66,6 +66,8 @@ dns = 1.1.1.1
 dns = 8.8.8.8
 
 tunnel-all-dns = true
+#no-route = 5.39.253.179
+
 
 # ускорение
 cisco-client-compat = true

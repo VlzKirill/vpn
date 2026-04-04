@@ -11,8 +11,21 @@ services:
       - /dev/net/tun:/dev/net/tun
 
     ports:
-      - "443:443/tcp"
-      - "443:443/udp"
+      - "4443:443/tcp"
+      - "4443:443/udp"
 
     volumes:
       - ./ocserv:/etc/ocserv
+
+  xray:
+    image: ghcr.io/xtls/xray-core:latest
+    container_name: xray
+    restart: unless-stopped
+
+    ports:
+      - "443:443/tcp"
+
+    volumes:
+      - ./xray/config.json:/etc/xray/config.json
+
+    command: ["run", "-config", "/etc/xray/config.json"]
